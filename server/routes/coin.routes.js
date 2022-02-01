@@ -25,7 +25,7 @@ router.post('/like-counter', (req, res)=>{
         newLikeAmount = likeTotal + counter;
     }
     Coin.findByIdAndUpdate({_id:coinId}, {favorites: newLikeAmount})
-    .then(res => console.log(res))
+    .then(res =>{})
 
 })
 
