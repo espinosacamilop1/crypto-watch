@@ -6,14 +6,11 @@ const port = 5000;
 
 const db = require('./db')
 
-
-
 // Packages used for authentication (Session & Passport)
 const session = require('express-session');
 const passport = require('passport');
 
 // Passport initial setup
-
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors({
     credentials:true,
@@ -36,10 +33,7 @@ app.use(passport.session());
 
 db.on('error', console.error.bind(console, 'db connection error:'))
 
-// app.get('/', (req, res) => {
-//     res.send('Hello World!')
-// })
-
+//set up all my routes
 const authRouter = require('./routes/auth.routes');
 app.use('/', authRouter)
 const coinRouter = require('./routes/coin.routes');

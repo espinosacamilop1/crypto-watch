@@ -1,5 +1,8 @@
 import axios from 'axios'
 
+
+//this file connects the React calls to the back end of the application
+
 const api = axios.create({
     baseURL: 'http://localhost:5000',
 withCredentials: true})
@@ -17,7 +20,6 @@ withCredentials: true})
  const updateCoinValue = (newUser,id) => api.put('/update-coin-value',{newUser,id}).then(res => res.data)
 
  const updateLikes = (coinId, coin, likeValue, likeTotal) => api.post('/like-counter', {coinId,coin, likeValue, likeTotal}).then(res => res.data)
-//  const likeDoge = () => api.post('/like-doge').then(res => res.data)
 
 const apis = {
     signup,

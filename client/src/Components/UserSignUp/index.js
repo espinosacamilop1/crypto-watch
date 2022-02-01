@@ -8,8 +8,9 @@ function SignUp() {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-
+    const [error, setError] = useState(false)
     
+    console.log(error)
     const handleUsernameInputChange = async e =>{
         const username = e.target.value;
         setUsername(username)
@@ -37,7 +38,11 @@ function SignUp() {
             setPassword('')
             navigate('/')
             
-        })
+        }).catch((err) => {
+            if(err){
+                setError(true)
+            }
+            })
     }
 
 
@@ -55,6 +60,12 @@ function SignUp() {
                 onChange={handlePasswordInputChange}
             />
         </form>
+        {error&& <p>Password Requirements:
+                    <ul>
+                        <li>Needs to have at least 6 chars</li>
+                        <li>Must contain at least one number</li>
+                        <li>Have one lowercase and one uppercase letter</li>
+                    </ul></p>}
         <button onClick={submitHandler}>Sign Up</button>
      </div>;
 }
