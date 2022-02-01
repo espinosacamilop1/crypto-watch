@@ -49,8 +49,13 @@ To run this project, install it locally using npm:
 
 ```
 $ cd ../crypto-watch
+$ cd ../client
 $ npm install
 $ npm start
+$ cd ../crypto-watch
+$ cd ../server
+$ npm install
+$ nodemon index.js
 ```
 
 MAINTAINERS
