@@ -1,0 +1,102 @@
+/* Dashboard Styles */
+.mainHeading{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 44px;
+    font-weight: lighter;
+    margin-left: 2%;
+
+}
+
+.userHeading{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 36px;
+    font-weight: lighter;
+    margin-left: 2%;
+}
+
+
+.allCoins{
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card{
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    width: 25%;
+    height: 5vh;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px rgb(160, 160, 160) ;
+}
+
+.namePrice > *{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.likeBtn > p{
+    margin: 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Log IN form Styles */
+
+.login{
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logInForm{
+    display: flex;
+    flex-direction: column;
+    height: 15%;
+    width: 100%;
+}
+
+.logInForm > *{
+    margin-top: 3vh;
+}
+
+.loginBtnDiv{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+/* Sign UP form Styles  */
+
+.signUpFormDiv{
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.singUpForm > *{
+    width: 100%;
+}
+
+
+.signUpErrBtn{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.signUpErrBtn > p{
+    color: rgb(151, 53, 53)
+}
