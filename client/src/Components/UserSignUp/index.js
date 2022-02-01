@@ -25,9 +25,9 @@ function SignUp() {
         console.log(username, password)
         const userName = username
         const passWord = password
-        const favorites = {"Bitcoin": false,
-                           "Ethereum": false,
-                           "Doge": false
+        const favorites = {"Bitcoin": true,
+                           "Ethereum": true,
+                           "Doge": true
                           }
 
          api.signup(userName, passWord, favorites)

@@ -28,8 +28,8 @@ export default function Dashboard({btcLikes,ethLikes,dogeLikes}) {
 
 
     //gets bitcoin data
-    useEffect(async()=>{
-    await    axios
+    useEffect(()=>{
+        axios
             .get('https://api.coinbase.com/v2/prices/BTC-USD/spot'
             ).then(res =>{
                 const data = res.data.data;
@@ -39,8 +39,8 @@ export default function Dashboard({btcLikes,ethLikes,dogeLikes}) {
 
 
     //gets eth data
-    useEffect(async()=>{
-    await     axios
+    useEffect(()=>{
+         axios
             .get('https://api.coinbase.com/v2/prices/ETH-USD/spot'
             ).then(res =>{
                 const data = res.data.data;
@@ -49,8 +49,8 @@ export default function Dashboard({btcLikes,ethLikes,dogeLikes}) {
     },[])
     
     //gets doge data
-    useEffect(async ()=>{
-     await   axios
+    useEffect( ()=>{
+        axios
             .get('https://api.coinbase.com/v2/prices/DOGE-USD/spot'
             ).then(res =>{
                 const data = res.data.data;
@@ -81,14 +81,27 @@ export default function Dashboard({btcLikes,ethLikes,dogeLikes}) {
                     <h3>Bitcoin</h3> 
                     <p>${bitcoinData.amount}</p>
                     <button value='Bitcoin' onClick={(value)=>{ 
+
                         const newUser = user;
                         const coin = value.target.value;
+
                         newUser.favorites[coin] = !newUser.favorites[coin]
+
                         setUser(newUser);
+
                         const id = user._id
-                        console.log(newUser)
+
+
                         api.updateCoinValue(newUser, id)
-                            .then(res => console.log(res))   
+                            .then(res => console.log(res))
+                            
+                        const likeValue = newUser.favorites[coin]
+                        const coinId = btcLikes._id
+                        const likeTotal = Number(btcLikes.favorites)
+
+                        api.updateLikes(coinId, coin, likeValue, likeTotal)
+                        .then(res => console.log(res))
+
                     }}>{!bitcoinFavorite? 'Like': 'Unlike'}</button>
 
 
@@ -98,15 +111,25 @@ export default function Dashboard({btcLikes,ethLikes,dogeLikes}) {
                     <h3>Ethereum</h3> 
                     <p>${ethData.amount}</p>
                     <button value='Ethereum' onClick={(value)=>{ 
+
                         const newUser = user;
                         const coin = value.target.value;
+
                         newUser.favorites[coin] = !newUser.favorites[coin]
+
                         setUser(newUser);
+
                         const id = user._id
-                        console.log(newUser)
+
                         api.updateCoinValue(newUser, id)
                             .then(res => console.log(res))
-                        
+
+                        const likeValue = newUser.favorites[coin]
+                        const coinId = ethLikes._id
+                        const likeTotal = Number(ethLikes.favorites)
+
+                        api.updateLikes(coinId, coin, likeValue, likeTotal)
+                        .then(res => console.log(res))
                     }}>{!ethFavorite? 'Like': 'Unlike'}</button>
                 
                     <p>Likes {ethLikes.favorites}</p>
@@ -116,21 +139,26 @@ export default function Dashboard({btcLikes,ethLikes,dogeLikes}) {
                     <h3>Dogecoin</h3> 
                     <p>${dogeData.amount}</p>
                     <button value='Doge' onClick={(value)=>{ 
+
                         const newUser = user;
                         const coin = value.target.value;
-                        const likeValue = newUser.favorites[coin]
+
                         newUser.favorites[coin] = !newUser.favorites[coin]
+
                         setUser(newUser);
+
                         const id = user._id
                         const coinId = dogeLikes._id
                         const likeTotal = Number(dogeLikes.favorites)
-                        console.log(coinId)
+                        const likeValue = newUser.favorites[coin]
+
                         api.updateCoinValue(newUser, id)
                             .then(res => console.log(res))
+
                         api.updateLikes(coinId, coin, likeValue, likeTotal)
                             .then(res => console.log(res))
                         
-                    }}>{dogeFavorite? 'Like': 'Unlike'}</button>
+                    }}>{!dogeFavorite? 'Like': 'Unlike'}</button>
                     <p>Likes {dogeLikes.favorites}</p>
 
                 </div>
